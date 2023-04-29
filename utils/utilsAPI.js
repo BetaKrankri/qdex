@@ -24,7 +24,7 @@ export const initialState = {
 
 const dataBaseURI = "https://pokeapi.co/api/v2/pokemon";
 
-export async function fetchPokeData(id) {
+export async function fetchPokemonEntry(id) {
   const pokeData = await fetch(`${dataBaseURI}/${id}`).then((r) => r.json());
   const pokeSpecieData = await fetch(pokeData.species.url).then((r) =>
     r.json()

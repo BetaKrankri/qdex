@@ -1,24 +1,44 @@
 import { useEffect, useState } from "react";
+import {
+  fetchPokemonEntry,
+  initialState as initialEntry,
+} from "../utils/utilsAPI";
 import "./App.css";
-
-import { fetchPokeData } from "../utils/utilsAPI";
+import EntryCard from "./components/common/entrycard/EntryCard";
+import { SpecieSection, AbilitiesSection } from "./components/sections/sections";
 
 function App() {
-  const [count, setCount] = useState(94);
+  const [currentId, setCurrentId] = useState(33);
+  const [entry, setEntry] = useState(initialEntry);
 
   useEffect(() => {
-    const printData = async () => {
-      const data = await fetchPokeData(count);
-      console.log(data);
+    const handleChangeId = async () => {
+      const newEntry = await fetchPokemonEntry(currentId);
+      setEntry(newEntry);
     };
-    printData();
-  }, [count]);
+    handleChangeId();
+  }, [currentId]);
+
+  useEffect(() => {
+    console.log("Entry", entry);
+    const tID = setTimeout(() => {
+      setCurrentId((prev) => prev + 1);
+    }, 100000);
+    return () => {
+      clearTimeout(tID);
+    };
+  }, [entry]);
 
   return (
     <>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
+      <div className="Header">
+        <EntryCard entry={entry} />
+      </div>
+      <div className="Body">
+        <SpecieSection entry={entry}/>
+        <AbilitiesSection entry={entry}/>
+      </div>
+      <div className="BottomNavbar"></div>
     </>
   );
 }
