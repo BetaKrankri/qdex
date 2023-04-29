@@ -1,8 +1,8 @@
 export function getHeightString(decimeters) {
   //TODO: corregir la conversion
   const meters = decimeters / 10;
-  const feet = Math.floor(decimeters / 30.48);
-  const inches = Math.round((decimeters / 2.54) % 12);
+  const feet = Math.floor(decimeters / 3.048);
+  const inches = Math.round((decimeters / .254) % 12);
   return `${feet}'${inches}'' (${meters.toFixed(2)} meters)`;
 }
 
