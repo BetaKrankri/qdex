@@ -4,11 +4,14 @@ import {
   initialState as initialEntry,
 } from "../utils/utilsAPI";
 import "./App.css";
-import EntryCard from "./components/common/entrycard/EntryCard";
-import { SpecieSection, AbilitiesSection } from "./components/sections/sections";
+
+import EntryCard from "./components/common/EntryCard/EntryCard";
+import SpecieSection from "./components/sections/SpecieSection";
+import AbilitiesSection from "./components/sections/AbilitySection";
+import StatsSection from "./components/sections/StatsSection";
 
 function App() {
-  const [currentId, setCurrentId] = useState(33);
+  const [currentId, setCurrentId] = useState(Math.floor(Math.random() * 900));
   const [entry, setEntry] = useState(initialEntry);
 
   useEffect(() => {
@@ -22,7 +25,7 @@ function App() {
   useEffect(() => {
     console.log("Entry", entry);
     const tID = setTimeout(() => {
-      setCurrentId((prev) => prev + 1);
+      setCurrentId(Math.floor(Math.random() * 900));
     }, 100000);
     return () => {
       clearTimeout(tID);
@@ -35,8 +38,9 @@ function App() {
         <EntryCard entry={entry} />
       </div>
       <div className="Body">
-        <SpecieSection entry={entry}/>
-        <AbilitiesSection entry={entry}/>
+        <SpecieSection entry={entry} />
+        <AbilitiesSection entry={entry} />
+        <StatsSection entry={entry} />
       </div>
       <div className="BottomNavbar"></div>
     </>
