@@ -1,4 +1,4 @@
-import Type from "../type/Type";
+import Type from "../Type/Type";
 import styles from "./EntryCard.module.css";
 import { upperCaseChar0 } from "../../../../utils/utils";
 
