@@ -38,6 +38,10 @@ function StatsGraph({ stats }) {
       ? "Speed"
       : statKey;
   };
+  const maxStatValue = Math.max(...Object.values(stats));
+  const getBarValue = (statValue) => {
+    return (statValue * 100) / maxStatValue;
+  };
 
   return (
     <div
@@ -52,6 +56,7 @@ function StatsGraph({ stats }) {
       {Object.keys(stats).map((statKey) => (
         <GraphBar
           title={getBarLegend(statKey)}
+          width={getBarValue(stats[statKey])}
           value={stats[statKey]}
           key={statKey}
         />
@@ -60,7 +65,7 @@ function StatsGraph({ stats }) {
   );
 }
 
-function GraphBar({ title, value }) {
+function GraphBar({ title, value, width }) {
   return (
     <div
       style={{
@@ -85,7 +90,7 @@ function GraphBar({ title, value }) {
       <div style={{ width: "100%" }}>
         <div
           style={{
-            width: `${value}%`,
+            width: `${width}%`,
             backgroundColor: "hsl(0, 0%, 35%)",
             borderRadius: ".0 .5rem .5rem 0",
             padding: "3px .5rem",
