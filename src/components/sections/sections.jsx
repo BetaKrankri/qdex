@@ -1,4 +1,8 @@
-import { getHeightString, getWeightString } from "../../../utils/utils";
+import {
+  getHeightString,
+  getWeightString,
+  upperCaseChar0,
+} from "../../../utils/utils";
 
 // contenedor con titulo superior
 const TitledSection = ({ children, title }) => {
@@ -87,10 +91,10 @@ export const AbilitiesSection = ({ entry }) => {
   const hiddenAbility = entry.abilities.find((a) => a.isHidden);
   const commonAbilities = entry.abilities.filter((a) => !a.isHidden);
 
-  const AbilityView = ({ abilityObj }) => {
+  const AbilityView = ({ ability }) => {
     const hiddenStyle = { border: "solid white 1px", margin: "1rem 0 0" };
     const commonStyle = { backgroundColor: "hsl(0,0%,20%)" };
-    const selectiveStyle = abilityObj.isHidden ? hiddenStyle : commonStyle;
+    const selectiveStyle = ability.isHidden ? hiddenStyle : commonStyle;
     return (
       <div
         style={{
@@ -102,7 +106,7 @@ export const AbilitiesSection = ({ entry }) => {
           ...selectiveStyle,
         }}
       >
-        {abilityObj.name}
+        {upperCaseChar0(ability.name)}
       </div>
     );
   };
@@ -117,10 +121,10 @@ export const AbilitiesSection = ({ entry }) => {
         }}
       >
         {commonAbilities.map((ca, i) => (
-          <AbilityView abilityObj={ca} key={i} />
+          <AbilityView ability={ca} key={i} />
         ))}
       </div>
-      {hiddenAbility && <AbilityView abilityObj={hiddenAbility} />}
+      {hiddenAbility && <AbilityView ability={hiddenAbility} />}
     </TitledSection>
   );
 };

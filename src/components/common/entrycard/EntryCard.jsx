@@ -1,5 +1,6 @@
 import Type from "../type/Type";
 import styles from "./EntryCard.module.css";
+import { upperCaseChar0 } from "../../../../utils/utils";
 
 function EntryCard({ children, entry }) {
   return (
@@ -22,7 +23,7 @@ function Info({ entry }) {
   return (
     <div className={styles.Info}>
       <div className={styles.text_wrapper}>
-        <h1>{name.charAt(0).toUpperCase() + name.slice(1)}</h1>
+        <h1>{upperCaseChar0(name)}</h1>
         <span>{formatId(id)}</span>
         <p>{genera.en}</p>
       </div>

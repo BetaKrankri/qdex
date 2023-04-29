@@ -4,11 +4,11 @@ import {
   initialState as initialEntry,
 } from "../utils/utilsAPI";
 import "./App.css";
-import EntryCard from "./components/entrycard/EntryCard";
+import EntryCard from "./components/common/entrycard/EntryCard";
 import { SpecieSection, AbilitiesSection } from "./components/sections/sections";
 
 function App() {
-  const [currentId, setCurrentId] = useState(403);
+  const [currentId, setCurrentId] = useState(33);
   const [entry, setEntry] = useState(initialEntry);
 
   useEffect(() => {

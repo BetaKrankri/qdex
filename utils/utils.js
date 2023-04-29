@@ -11,3 +11,11 @@ export function getWeightString(centigrams) {
   const pounds = kilos * 2.204;
   return `${pounds.toFixed(2)} Pounds (${kilos.toFixed(1)} Kg)`;
 }
+
+export function upperCaseChar0(string) {
+  if (typeof string === "string") {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  } else {
+    throw new Error("No es tipo string");
+  }
+}
