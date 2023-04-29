@@ -26,7 +26,7 @@ function App() {
     console.log("Entry", entry);
     const tID = setTimeout(() => {
       setCurrentId(Math.floor(Math.random() * 900));
-    }, 1000000);
+    }, 60000);
     return () => {
       clearTimeout(tID);
     };
