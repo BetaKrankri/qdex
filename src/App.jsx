@@ -5,14 +5,10 @@ import {
 } from "../utils/utilsAPI";
 import "./App.css";
 import EntryCard from "./components/entrycard/EntryCard";
-import TitledSection, {
-  Abilities,
-  SubtitledBox,
-} from "./components/sections/TitledSection";
-import { getHeightString, getWeightString } from "../utils/utils";
+import { SpecieSection, AbilitiesSection } from "./components/sections/sections";
 
 function App() {
-  const [currentId, setCurrentId] = useState(1);
+  const [currentId, setCurrentId] = useState(403);
   const [entry, setEntry] = useState(initialEntry);
 
   useEffect(() => {
@@ -27,46 +23,11 @@ function App() {
     console.log("Entry", entry);
     const tID = setTimeout(() => {
       setCurrentId((prev) => prev + 1);
-    }, 3000);
+    }, 100000);
     return () => {
       clearTimeout(tID);
     };
   }, [entry]);
-
-  ////////// start Components ////////
-  const SpecieSection = () => (
-    <TitledSection title="Specie">
-      <SubtitledBox title="Description">{entry.description.text}</SubtitledBox>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
-        <SubtitledBox title="Height">
-          {getHeightString(entry.height)}
-        </SubtitledBox>
-        <SubtitledBox title="Weight">
-          {getWeightString(entry.weight)}
-        </SubtitledBox>
-      </div>
-    </TitledSection>
-  );
-
-  const AbilitiesSection = () => {
-    const hiddenAbility = entry.abilities.find((a) => a.isHidden);
-    const commonAbilities = entry.abilities.filter((a) => !a.isHidden);
-
-    return (
-      <TitledSection title="Abilities">
-        <div>
-          {commonAbilities.map((ca, i) => (
-            <div style={{}} key={i}>
-              {ca.name}
-            </div>
-          ))}
-        </div>
-        {hiddenAbility && <div style={{}}>{hiddenAbility.name}</div>}
-      </TitledSection>
-    );
-  };
-
-  ////////// Ending Components ////////
 
   return (
     <>
@@ -74,15 +35,12 @@ function App() {
         <EntryCard entry={entry} />
       </div>
       <div className="Body">
-        <SpecieSection />
-        <AbilitiesSection />
-        <TitledSection title="Stats"></TitledSection>
+        <SpecieSection entry={entry}/>
+        <AbilitiesSection entry={entry}/>
       </div>
       <div className="BottomNavbar"></div>
     </>
   );
 }
-
-function SpecieSection() {}
 
 export default App;
