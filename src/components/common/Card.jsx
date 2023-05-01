@@ -1,5 +1,6 @@
-import { upperCaseChar0, formatId } from "../../../../utils/utils";
-import Type from "../Type/Type";
+import { upperCaseChar0, formatId } from "../../../utils/utils";
+import Type from "./Type";
+import TextWaiting from "./TextWaiting";
 
 function Card({ children, entry }) {
   return (
@@ -22,7 +23,7 @@ function Card({ children, entry }) {
           borderRadius: "50% 0 0 50%",
         }}
       >
-        <Picture url={entry.urlToImage} />
+        <Picture urlToImage={entry.urlToImage} />
       </div>
     </div>
   );
@@ -46,18 +47,26 @@ function Info({ entry }) {
           rowGap: ".5rem",
         }}
       >
-        <p style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
-          {upperCaseChar0(entry.name)}
-        </p>
-        <div style={{ fontSize: ".875rem", display: 'grid', placeItems: 'center' }}>{formatId(entry.id)}</div>
+        {entry.name ? (
+          <p style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
+            {upperCaseChar0(entry.name)}
+          </p>
+        ) : (
+          <TextWaiting wordsLong={1} />
+        )}
+        <div
+          style={{ fontSize: ".875rem", display: "grid", placeItems: "center" }}
+        >
+          {formatId(entry.id)}
+        </div>
         <div
           style={{
             fontSize: ".8rem",
             fontWeight: "lighter",
-            gridColumn: '1 / -1'
+            gridColumn: "1 / -1",
           }}
         >
-          {entry.genera.en}
+          {entry.genera.en ? entry.genera.en : <TextWaiting wordsLong={3} />}
         </div>
       </div>
 
@@ -70,10 +79,15 @@ function Info({ entry }) {
   );
 }
 
-function Picture({ url }) {
+function Picture({ urlToImage }) {
   return (
     <>
-      <img src={url} alt={url} style={{ width: "100%" }} />
+      <img
+        src={urlToImage}
+        alt={''}
+        style={{ width: "100%" }}
+
+      />
     </>
   );
 }
