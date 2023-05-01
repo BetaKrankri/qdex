@@ -1,5 +1,5 @@
-import { upperCaseChar0, formatId } from "../../../../utils/utils";
-import Type from "../Type/Type";
+import { upperCaseChar0, formatId } from "../../../utils/utils";
+import Type from "./Type";
 
 function Card({ children, entry }) {
   return (

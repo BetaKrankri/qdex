@@ -8,8 +8,8 @@ import "./App.css";
 import SpecieSection from "./components/sections/SpecieSection";
 import AbilitiesSection from "./components/sections/AbilitySection";
 import StatsSection from "./components/sections/StatsSection";
-import Card from "./components/common/Card/Card";
-import Navigation from "./components/common/Navigation/Navigation";
+import Card from "./components/common/Card";
+import Navigation from "./components/common/Navigation";
 
 function App() {
   const [currentId, setCurrentId] = useState(900);
