@@ -2,7 +2,7 @@ export function getHeightString(decimeters) {
   //TODO: corregir la conversion
   const meters = decimeters / 10;
   const feet = Math.floor(decimeters / 3.048);
-  const inches = Math.round((decimeters / .254) % 12);
+  const inches = Math.round((decimeters / 0.254) % 12);
   return `${feet}'${inches}'' (${meters.toFixed(2)} meters)`;
 }
 
@@ -19,3 +19,7 @@ export function upperCaseChar0(string) {
     throw new Error("No es tipo string");
   }
 }
+
+export const formatId = (id) => {
+  return `#${String(id).padStart(4, "0")}`;
+};
