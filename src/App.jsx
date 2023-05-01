@@ -5,13 +5,13 @@ import {
 } from "../utils/utilsAPI";
 import "./App.css";
 
-import EntryCard from "./components/common/EntryCard/EntryCard";
 import SpecieSection from "./components/sections/SpecieSection";
 import AbilitiesSection from "./components/sections/AbilitySection";
 import StatsSection from "./components/sections/StatsSection";
+import Card from "./components/common/EntryCard/Card";
 
 function App() {
-  const [currentId, setCurrentId] = useState(Math.floor(Math.random() * 900));
+  const [currentId, setCurrentId] = useState(830);
   const [entry, setEntry] = useState(initialEntry);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function App() {
     console.log("Entry", entry);
     const tID = setTimeout(() => {
       setCurrentId(Math.floor(Math.random() * 900));
-    }, 60000);
+    }, 2000);
     return () => {
       clearTimeout(tID);
     };
@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <div className="Header">
-        <EntryCard entry={entry} />
+        <Card entry={entry} />
       </div>
       <div className="Body">
         <SpecieSection entry={entry} />

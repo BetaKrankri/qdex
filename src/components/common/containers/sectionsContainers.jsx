@@ -52,6 +52,7 @@ export const SubtitledBox = ({ children, title }) => {
           color: "white",
           fontSize: ".75rem",
           textAlign: "center",
+          lineHeight: '1.4',
           width: "100%",
         }}
       >

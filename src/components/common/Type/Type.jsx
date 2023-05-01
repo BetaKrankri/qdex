@@ -1,10 +1,12 @@
 const style = {
+  width: "100%",
   border: "solid 1px white",
   padding: ".25rem",
-  minWidth: 100,
+  minWidth: 60,
   borderRadius: 50,
   display: "grid",
   placeItems: "center",
+  fontSize: '.8rem',
 };
 
 function Type({ type }) {

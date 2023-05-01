@@ -96,6 +96,7 @@ function GraphBar({ title, value, width }) {
             padding: "3px .5rem",
             display: "flex",
             justifyContent: "right",
+            transition: 'width .3s ease-in-out'
           }}
         >
           {value}
