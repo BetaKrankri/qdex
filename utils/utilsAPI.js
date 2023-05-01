@@ -2,9 +2,9 @@ import { getPokemonEntry } from "./utils";
 
 // estructura base del  objeto de datos
 export const initialState = {
-  id: null,
-  name: undefined,
-  genera: [],
+  id: 0,
+  name: '',
+  genera: {},
   types: [],
   urlToImage: "url",
   description: {},

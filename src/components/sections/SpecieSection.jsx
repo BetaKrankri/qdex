@@ -3,7 +3,7 @@ import {
   TitledSection,
   SubtitledBox,
 } from "../common/containers/sectionsContainers";
-import { TextWaiting } from "../common/TextWaiting";
+import TextWaiting from "../common/TextWaiting";
 
 export default function SpecieSection({ entry }) {
   return (

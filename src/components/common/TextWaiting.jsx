@@ -1,5 +1,5 @@
 
-export function TextWaiting({ wordsLong = 10 }) {
+function TextWaiting({ wordsLong = 10 }) {
     let charsWaiting = Array(wordsLong).fill(null);
     charsWaiting = charsWaiting.map((cw, i) => {
       return (
@@ -20,3 +20,5 @@ export function TextWaiting({ wordsLong = 10 }) {
       </div>
     );
   }
+
+  export default TextWaiting

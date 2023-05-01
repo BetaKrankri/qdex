@@ -86,6 +86,7 @@ export function getPokemonEntry(pokeData, pokeSpecieData) {
     id: pokeData.id,
     name: pokeData.species.name, // TODO: getnamesDic for names in diferent languages
     genera: getGenusDic(),
+    // genera: [],
     urlToImage: getUrlToImage(),
     description: getDescription(),
     height: pokeData.height,
